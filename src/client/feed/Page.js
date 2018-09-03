@@ -52,12 +52,12 @@ class Page extends React.Component {
     const shouldDisplaySelector = location.pathname !== '/' || (!authenticated && loaded);
     const displayTopicSelector = location.pathname === '/trending';
 
-    const robots = location.pathname === '/' ? 'index,follow' : 'noindex,follow';
+    const robots = location.pathname === '/' ? 'index,follow' : 'index,follow';
 
     return (
       <div>
         <Helmet>
-          <title>Busy</title>
+          <title>Polish Network</title>
           <meta name="robots" content={robots} />
         </Helmet>
         <ScrollToTop />
