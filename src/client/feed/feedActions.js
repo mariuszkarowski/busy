@@ -29,7 +29,7 @@ export const getFeedContent = ({ sortBy = 'trending', category, limit = 20 }) =>
 ) =>
   dispatch({
     type: GET_FEED_CONTENT.ACTION,
-    payload: getDiscussionsFromAPI(sortBy, { tag: category, limit }, steemAPI),
+    payload: getDiscussionsFromAPI(sortBy, { tag: category || 'polish', limit }, steemAPI),
     meta: {
       sortBy,
       category: category || 'all',
@@ -59,7 +59,7 @@ export const getMoreFeedContent = ({ sortBy, category, limit = 20 }) => (
     payload: getDiscussionsFromAPI(
       sortBy,
       {
-        tag: category,
+        tag: category || 'polish',
         limit: limit + 1,
         start_author: startAuthor,
         start_permlink: startPermlink,
