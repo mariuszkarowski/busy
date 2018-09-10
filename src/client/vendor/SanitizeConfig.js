@@ -168,7 +168,7 @@ export default ({ large = true, noImage = false, sanitizeErrors = [], secureLink
       const attys = {};
 
       const url = new URL(href);
-      const hostname = url.hostname || 'localhost';
+      const hostname = url.hostname || 'pl.network';
 
       if (['https', 'http'].indexOf(url.protocol) || !hostname.match(ownUrl)) {
         attys.target = '_blank';
