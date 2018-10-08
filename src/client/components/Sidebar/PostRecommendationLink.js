@@ -61,6 +61,38 @@ const PostRecommendationLink = ({ post, navigateToPost, navigateToPostComments }
           </Link>
         )}
       </div>
+     
+    </div>
+  );
+};
+
+PostRecommendationLink.propTypes = {
+  post: PropTypes.shape(),
+  navigateToPost: PropTypes.func,
+  navigateToPostComments: PropTypes.func,
+};
+
+PostRecommendationLink.defaultProps = {
+  post: {},
+  navigateToPost: () => {},
+  navigateToPostComments: () => {},
+};
+
+export default PostRecommendationLink;
+
+                values={{ count: <FormattedNumber value={post.children} /> }}
+                defaultMessage="{count} comment"
+              />
+            ) : (
+              <FormattedMessage
+                id="comments_count"
+                values={{ count: <FormattedNumber value={post.children} /> }}
+                defaultMessage="{count} comments"
+              />
+            )}
+          </Link>
+        )}
+      </div>
       <div className="PostRecommendation__link__image-container">
         <Link
           to={`/${post.category}/@${post.author}/${post.permlink}`}
