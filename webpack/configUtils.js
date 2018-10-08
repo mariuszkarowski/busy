@@ -36,7 +36,7 @@ const DEFINE_PLUGIN = new webpack.DefinePlugin({
   ),
   'process.env.STEEMJS_URL': JSON.stringify(process.env.STEEMJS_URL || 'https://api.steemit.com'),
   'process.env.SIGNUP_URL': JSON.stringify(
-    process.env.SIGNUP_URL || 'https://pl.network/@santarius/prezentujemy-steemfounders-serwis-umozliwiajacy-ekspresowa-rejestracje-nowych-wartosciowych-tworcow',
+    process.env.SIGNUP_URL || 'https://pl.network/polish/@santarius/dostepne-metody-rejestracji-na-steem',
   ),
   'process.env.MANIFEST_PATH': JSON.stringify(paths.assets),
 });
