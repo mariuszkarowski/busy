@@ -98,7 +98,7 @@ export default function renderAmpPage(post, appUrl, template) {
   return template(context, {
     data: {
       intl: {
-        locales: 'en-US',
+        locales: 'pl-PL',
       },
     },
   });
