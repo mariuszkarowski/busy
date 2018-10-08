@@ -74,6 +74,69 @@ class Search extends React.Component {
             />
           );
         case 'user':
+          return ;
+        default:
+          return null;
+      }
+    });
+  }
+
+  render() {
+    const { intl, searchResults, searchLoading } = this.props;
+    const noSearchResults = _.isEmpty(searchResults) && !searchLoading;
+
+    return (
+      <div className="settings-layout container">
+        <Helmet>
+          <title>{intl.formatMessage({ id: 'search', defaultMessage: 'Search' })} - Pl Network</title>
+        </Helmet>
+        <Affix className="leftContainer" stickPosition={77}>
+          <div className="left">
+            <LeftSidebar />
+          </div>
+        </Affix>
+        <div className="center">
+          <h1 className="Search__title">
+            <FormattedMessage id="search_results" defaultMessage="Search results" />
+          </h1>
+          <div className="Search">
+            {noSearchResults && <SearchResultEmptyMessage />}
+            {searchLoading ? <Loading style={{ marginTop: '20px' }} /> : this.renderSearchResult()}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Search;
+
+  componentWillReceiveProps(nextProps) {
+    const oldSearchQuery = _.get(this.props.location.state, 'query', '');
+    const newSearchQuery = _.get(nextProps.location.state, 'query', '');
+
+    if (oldSearchQuery !== newSearchQuery) {
+      this.props.searchAskSteem(newSearchQuery);
+    }
+  }
+
+  renderSearchResult() {
+    const { searchResults } = this.props;
+    return _.map(searchResults, (result, i) => {
+      switch (result.type) {
+        case 'post':
+          return (
+            <SearchResultPostPreview
+              key={`${i}/${result.author}/${result.permlink}`}
+              author={result.author}
+              created={result.created}
+              title={result.title}
+              summary={result.summary}
+              permlink={result.permlink}
+              tags={result.tags}
+            />
+          );
+        case 'user':
           return <SearchResultUserPreview key={`${i}/${result.name}`} username={result.name} />;
         default:
           return null;
