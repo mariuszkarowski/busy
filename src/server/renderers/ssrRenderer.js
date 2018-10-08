@@ -8,7 +8,7 @@ export default function renderSsrPage(store, html, assets, template, noindex) {
   const baseHelmet = helmet.meta.toString() + helmet.title.toString() + helmet.link.toString();
 
   let header = baseHelmet;
-  if (noindex) header += `<meta name="robots" content="noindex, nofollow">`;
+  if (noindex) header += `<meta name="robots" content="index, follow">`;
 
   let scripts = `<script>window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)
     .replace(/\u2028/g, '\\n')
